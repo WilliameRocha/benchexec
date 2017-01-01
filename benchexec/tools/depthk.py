@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 """
@@ -87,6 +88,8 @@ class Tool(benchexec.tools.template.BaseTool):
             status = result.RESULT_FALSE_DEREF
         elif 'valid-memtrack' in output:
             status = result.RESULT_FALSE_MEMTRACK
+        elif 'FALSE(TERMINATION)' in output:
+            status = result.RESULT_FALSE_TERMINATION
         elif 'FALSE' in output:
             status = result.RESULT_FALSE_REACH
         elif 'UNKNOWN' in output:
@@ -107,4 +110,3 @@ class Tool(benchexec.tools.template.BaseTool):
                 return matchstep.group(1).strip()
 
         return '-'
-
